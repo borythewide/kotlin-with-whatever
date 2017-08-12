@@ -10,7 +10,12 @@ import java.util.Date
 
 @RestController
 @RequestMapping("/greet")
-class GreetController (val greetService:GreetService){
-    @GetMapping("/{name}")
-	fun greet(@PathVariable("name") name:String) = GreetModel(name, greetService.getGreetDate())
+class GreetController(val greetService: GreetService) {
+	@GetMapping("/{name}")
+	fun greet(@PathVariable("name") name: String) 
+		= GreetModel(name, greetService.getGreetDate(), greetService.getOne())
+	
+	@GetMapping("/")
+	fun defaultGreet()
+	    = GreetModel("borythewide", greetService.getGreetDate(), greetService.getOne())
 }

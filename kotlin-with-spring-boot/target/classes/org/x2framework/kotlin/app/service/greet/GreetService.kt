@@ -4,4 +4,5 @@ import java.util.Date
 
 interface GreetService {
 	fun getGreetDate(): Date
+	fun getOne(): Int
 }

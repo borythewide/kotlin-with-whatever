@@ -1,2 +1,19 @@
 server:
   port: 8088
+  
+spring:
+  datasource:
+    platform: h2
+    
+mybatis:
+  config-location: classpath:/mybatis/h2-configuration.xml
+  mapper-locations: classpath:/mybatis/mapper/**/*.xml
+ 
+logging:
+  level:
+    jdbc.sqlonly: INFO
+    jdbc.resultsettable: INFO
+    jdbc.sqltiming: INFO
+    jdbc.resultset: ERROR
+    jdbc.audit: ERROR
+    jdbc.connection: ERROR
