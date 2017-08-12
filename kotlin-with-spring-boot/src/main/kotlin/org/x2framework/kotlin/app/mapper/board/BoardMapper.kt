@@ -8,4 +8,6 @@ interface BoardMapper {
 	fun getOne():Int
 	
 	fun getAll():List<Board>
+	
+	fun insert(board:Board): Int
 }

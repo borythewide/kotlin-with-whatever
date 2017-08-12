@@ -14,4 +14,14 @@
 		SELECT * FROM BOARD
 	]]>
 	</select>
+	
+	<insert id="insert" parameterType="board">
+	<![CDATA[
+		INSERT INTO BOARD(
+			TITLE, CONTENTS, CREATED_BY, UPDATED_BY
+		)VALUES (
+			#{title}, #{contents}, #{createdBy}, #{createdBy}
+		)
+	]]>
+	</insert>
 </mapper>

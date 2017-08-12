@@ -5,7 +5,7 @@ import org.x2framework.kotlin.app.mapper.sample.SampleMapper
 import java.util.Date
 
 @Service
-open class GreetServiceImpl(
+class GreetServiceImpl(
     val sampleMapper:SampleMapper
 ): GreetService{
 	

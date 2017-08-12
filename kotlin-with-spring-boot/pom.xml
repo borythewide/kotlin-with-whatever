@@ -9,6 +9,7 @@
 		<java.version>1.8</java.version>
 		<file.encoding>UTF-8</file.encoding>
 		<kotlin.version>1.1.3-2</kotlin.version>
+		<swagger2.version>2.7.0</swagger2.version>
 	</properties>
 
 	<parent>
@@ -18,17 +19,18 @@
 	</parent>
 
 	<dependencies>
+		<!-- Spring boot starters -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.3.0</version>
 		</dependency>
 
+		<!-- kotlin -->
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib-jre8</artifactId>
@@ -49,6 +51,12 @@
 			<artifactId>kotlin-test-junit</artifactId>
 			<version>${kotlin.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-kotlin</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
 
 		<!-- H2 Database -->
 		<dependency>
@@ -79,6 +87,19 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- Swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger2.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -102,7 +123,11 @@
 					<jvmTarget>1.8</jvmTarget>
 					<compilerPlugins>
 						<plugin>spring</plugin>
+						<plugin>no-arg</plugin>
 					</compilerPlugins>
+					<pluginOptions>
+						<option>no-arg:annotation=org.x2framework.kotlin.model.KotlinModel</option>
+					</pluginOptions>
 				</configuration>
 				<executions>
 					<execution>
@@ -134,6 +159,11 @@
 					<dependency>
 						<groupId>org.jetbrains.kotlin</groupId>
 						<artifactId>kotlin-maven-allopen</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-noarg</artifactId>
 						<version>${kotlin.version}</version>
 					</dependency>
 				</dependencies>

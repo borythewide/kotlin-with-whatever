@@ -2,6 +2,8 @@ server:
   port: 8088
   
 spring:
+  jackson:
+    default-property-inclusion: non-null
   datasource:
     platform: h2
     
@@ -11,6 +13,7 @@ mybatis:
  
 logging:
   level:
+    org.x2framework: DEBUG
     jdbc.sqlonly: INFO
     jdbc.resultsettable: INFO
     jdbc.sqltiming: INFO
