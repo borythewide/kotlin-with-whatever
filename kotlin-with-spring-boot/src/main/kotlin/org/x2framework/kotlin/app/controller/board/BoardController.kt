@@ -1,5 +1,7 @@
 package org.x2framework.kotlin.app.controller.board
 
+import org.springframework.messaging.Message
+import org.springframework.messaging.support.MessageBuilder
 import org.springframework.statemachine.StateMachine
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -18,11 +20,9 @@ class BoardController(
 	@GetMapping("/all")
 	fun all(): List<Board> {
 		println("before stateMachine:: [$stateMachine.state]")
-		stateMachine.sendEvent("E1")
-		println("intermediate1 stateMachine:: [$stateMachine.state]")
-		stateMachine.sendEvent("E2")
-		println("intermediate2 stateMachine:: [$stateMachine.state]")
-		stateMachine.sendEvent("end")
+		stateMachine.sendEvent(
+				MessageBuilder.withPayload("FORKED_EVENT").setHeaderIfAbsent("eventObj", "12345").build()
+		)
 		println("after stateMachine:: [$stateMachine.state]")
 		
 		return boardService.all()
@@ -30,10 +30,6 @@ class BoardController(
 	
 	@PostMapping()
 	fun insert(board:Board): ResponseData {
-		println("before stateMachine:: [$stateMachine.state]")
-		stateMachine.sendEvent("E2")
-		println("after stateMachine:: [$stateMachine.state]")
-		
 		LOGGER.debug("insertBoard: [$board.toString()]")
 		
 		val cnt = boardService.insert(board)
