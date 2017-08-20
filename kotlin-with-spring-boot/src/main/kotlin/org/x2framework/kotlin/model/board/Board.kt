@@ -7,21 +7,14 @@ import org.x2framework.kotlin.model.KotlinModel
 
 @KotlinModel
 @Alias("board")
-class Board : Serializable {
-	var uid: Int = -1
-	var title: String = ""
-	var contents: String = ""
-	var readCount: Int = 0
-	var createdBy: String = ""
-	var createdDate: Date = Date(System.currentTimeMillis())
-	var updatedBy: String = ""
-	var updatedDate: Date = Date(System.currentTimeMillis())
-	
-	override fun toString(): String =
-"""Board [
-    uid=$uid, title=$title, contents=$contents, readCount=$readCount 
-    createdBy=$createdBy, createdDate=$createdDate,
-    updatedBy=$updatedBy, updatedDate=$updatedDate
-]
-"""
+data class Board(
+	var uid: Int = -1,
+	var title: String = "",
+	var contents: String = "",
+	var readCount: Int = 0,
+	var createdBy: String = "",
+	var createdDate: Date = Date(System.currentTimeMillis()),
+	var updatedBy: String = "",
+	var updatedDate: Date = Date(System.currentTimeMillis()) 
+) : Serializable {
 }

@@ -24,4 +24,18 @@
 		)
 	]]>
 	</insert>
+	
+	<update id="addReadCount" parameterType="board">
+	<![CDATA[
+		UPDATE BOARD SET READ_COUNT = READ_COUNT + 1
+		 WHERE UID = #{uid}
+	]]>
+	</update>
+	
+	<select id="get" parameterType="board" resultType="board">
+	<![CDATA[
+		SELECT * FROM BOARD
+		 WHERE UID = #{uid}
+	]]>	
+	</select>
 </mapper>

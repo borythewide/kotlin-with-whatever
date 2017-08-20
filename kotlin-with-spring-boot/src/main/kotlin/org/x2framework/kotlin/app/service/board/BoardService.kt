@@ -6,4 +6,6 @@ interface BoardService {
 	fun all(): List<Board>
 	
 	fun insert(board:Board): Int
+	
+	fun read(board:Board): Board
 }

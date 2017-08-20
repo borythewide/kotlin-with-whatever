@@ -1,9 +1,9 @@
 package org.x2framework.kotlin.app.controller.board
 
-import org.springframework.messaging.Message
 import org.springframework.messaging.support.MessageBuilder
 import org.springframework.statemachine.StateMachine
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -34,5 +34,13 @@ class BoardController(
 		
 		val cnt = boardService.insert(board)
 		return ResponseData(true, "$cnt Board data has been inserted successfully")
+	}
+	
+	@GetMapping("/{uid}")
+	fun read(@PathVariable("uid") uid:Int): Board{
+		LOGGER.debug("read Board: $uid")
+		
+		val board = boardService.read(Board(uid = uid))
+		return board
 	}
 }

@@ -10,4 +10,8 @@ interface BoardMapper {
 	fun getAll():List<Board>
 	
 	fun insert(board:Board): Int
+	
+	fun addReadCount(board:Board)
+	
+	fun get(board:Board): Board?
 }
